@@ -2,7 +2,7 @@ if ! [ $0 = "./setup.sh" ] ; then
     return 1
 fi
 
-DOTFILESDIR="$HOME/.dotfiles"
+DOTFILESDIR="$PWD"
 
 ln -s $DOTFILESDIR/.latexmkrc $HOME
 ln -s $DOTFILESDIR/.tmux.conf $HOME
