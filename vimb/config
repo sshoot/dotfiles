@@ -1,0 +1,22 @@
+"""""""""""
+" key config
+"""""""""""
+nnoremap u <C-U>
+nnoremap d <C-D>
+nnoremap H <C-O>
+nnoremap L <C-I>
+
+"""""""""""
+" hint config
+"""""""""""
+set hint-keys=asdfjklewcmpgh
+set hint-keys-same-length=true
+set hint-match-element=false
+
+"""""""""""
+" general config
+"""""""""""
+set smooth-scrolling=true
+set download-path=~/Downloads
+set home-page=https://www.google.com/
+set default-zoom=130
