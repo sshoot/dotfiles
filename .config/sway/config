@@ -14,6 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
+#set $term "WINIT_UNIX_BACKEND=x11 alacritty"
 set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -207,6 +208,10 @@ bindsym $mod+r mode "resize"
     bindsym XF86AudioRaiseVolume exec sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +10%"
     bindsym XF86AudioLowerVolume exec sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -10%"
     bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+    bindsym XF86AudioPlay exec --no-startup-id playerctl play
+    bindsym XF86AudioPause exec --no-startup-id playerctl pause
+    bindsym XF86AudioNext exec --no-startup-id playerctl next
+    bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 #
 # Status Bar:
 #
@@ -233,7 +238,7 @@ bar {
 #
 font pango:monospace 12
 gaps inner 10
-exec fcitx-autostart
+
 input "type:touchpad" {
     scroll_method two_finger
     natural_scroll enabled
@@ -244,9 +249,12 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 }
 
 for_window [app_id="zoom"] floating enable
+for_window [app_id="matplotlib"] floating enable
 for_window [app_id="CiscoCollabHost"] floating enable
 for_window [title="Picture-in-Picture"] floating enable
 
+exec fcitx5
+exec /opt/eset/esets/bin/esets_gui
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 include /etc/sway/config.d/*
