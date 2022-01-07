@@ -273,7 +273,7 @@ for_window [class="Matplotlib"] floating enable
 # for_window [class="Vimb"] focus child, layout tabbed, focus
 
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id feh --bg-scale $HOME/.local/share/wallpapers/a5g1zzdqc8x71_resize.jpg
+exec --no-startup-id feh --bg-scale $HOME/.local/share/wallpapers/a5g1zzdqc8x71_resize.jpg --bg-scale $HOME/.local/share/wallpapers/a5g1zzdqc8x71_resize.jpg
 exec --no-startup-id picom -CGb
 exec --no-startup-id caffeine
 
