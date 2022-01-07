@@ -31,9 +31,6 @@ if [ -e /etc/gentoo-release ] ; then
 elif [ -e /etc/arch-release ] ; then
     autoload -Uz compinit
     compinit
-    export GTK_IM_MODULE=fcitx
-    export QT_IM_MODULE=fcitx
-    export XMODIFIERS=@im=fcitx
     export AUR_PAGER=ranger
     alias aur-vercmp='aur repo -d custom --list | aur vercmp'
 fi
@@ -44,40 +41,18 @@ fi
 
 EDITOR=/usr/bin/vim
 
+# vcs settings
+autoload -Uz vcs_info
+setopt prompt_subst
+precmd_vcs_info () { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+
 PROMPT='
-%F{cyan}%n%f@%F{magenta}%m%f[%F{green}%~%f]
+%F{cyan}%n%f@%F{magenta}%m%f[%F{green}%~%f]${vcs_info_msg_0_}
 %# '
 RPROMPT='%D %*'
-
-# Settings for environmental variables
-case $PATH in
-    *"$HOME/.local/bin"*)
-        ;;
-    *)
-        export PATH="$HOME/.local/bin:$PATH" ;;
-esac
-
-case $PATH in
-    *"$HOME/.local/texlive/2021/bin/x86_64-linux"*)
-        ;;
-    *)
-        export PATH="$PATH:$HOME/.local/texlive/2021/bin/x86_64-linux";;
-esac
-
-case $MANPATH in
-    *"$HOME/.local/share/man"*)
-        ;;
-    *)
-        export MANPATH="$MANPATH:$HOME/.local/share/man" ;;
-esac
-
-case $INFOPATH in
-    *"$HOME/.local/share/info"*)
-        ;;
-    *)
-        export INFOPATH="$INFOPATH:$HOME/.local/share/info" ;;
-esac
-
-#if [ $TERM != 'screen' ] && [ $TERM != 'tmux' ]; then
-#    [ -x '/usr/bin/tmux' ] && tmux;
-#fi
