@@ -30,8 +30,8 @@ alert-alt = #f01a1a
 warning = #f0c11a
 good = #2cf01a
 
-[bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
+[bar/default]
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
 height = 35
 ;offset-x = 1%
@@ -69,12 +69,62 @@ modules-left = i3 nowplaying
 ;modules-center = mpd
 modules-center = date
 ;modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
-modules-right =  pulseaudio memory cpu wlan eth vpn battery temperature powermenu
+modules-right =  pulseaudio memory cpu wlan eth vpn battery temperature
 
 tray-position = center
 tray-padding = 2
 tray-background = ${colors.background-alt}
 tray-offset-x = 15%
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/HDMI-1]
+monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 35
+;offset-x = 1%
+;offset-y = 1%
+radius = 6.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=14;1
+font-1 = NotoSans:style=Regular:size=14;0
+font-2 = FontAwesome5Free:style=Solid:pixelsize=16;0
+font-3 = FontAwesome5Brands:style=Solid:pixelsize=14:antialias=false;0
+font-4 = SourceHanSansJP:style=Regular:size=14;1
+
+modules-left = i3 nowplaying
+modules-center = date
+modules-right =  pulseaudio memory cpu wlan eth vpn battery temperature
+
+tray-position = none
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -147,6 +197,8 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
+
+pin-workspaces = true
 
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
