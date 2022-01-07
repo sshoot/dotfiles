@@ -1,0 +1,4 @@
+#!/bin/sh
+# nowplaying
+
+playerctl -F metadata --format "{{emoji(status)}} : {{trunc(artist, 20)}} - {{trunc(title, 30)}} : {{playerName}}"

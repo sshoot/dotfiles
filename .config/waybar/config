@@ -7,7 +7,9 @@
         // Choose the order of the modules
         "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
         // "modules-center": ["sway/window"],
-        "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
+        "modules-center": ["clock"],
+        // "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
+        "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "tray"],
         // Modules configuration
         // "sway/workspaces": {
         //     "disable-scroll": true,
@@ -76,7 +78,7 @@
         "clock": {
             // "timezone": "America/New_York",
             "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-            "format-alt": "{:%Y-%m-%d}"
+            "format-alt": "{:%Y-%m-%d %T}"
         },
         "cpu": {
             "format": "{usage}% ",
@@ -88,8 +90,8 @@
         "temperature": {
             "thermal-zone": 3,
             // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-            "critical-threshold": 80,
-            // "format-critical": "{temperatureC}°C {icon}",
+            "critical-threshold": 65,
+            "format-critical": "{temperatureC}°C {icon}",
             "format": "{temperatureC}°C {icon}",
             "format-icons": ["", "", ""]
         },
@@ -145,15 +147,21 @@
             "on-click": "pavucontrol"
         },
         "custom/media": {
-            "format": "{icon} {}",
-            "return-type": "json",
-            "max-length": 40,
-            "format-icons": {
-                "spotify": "",
-                "default": "🎜"
-            },
-            "escape": true,
-            "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-                // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+            "format": "{}",
+            "exec": "$HOME/.config/waybar/nowplaying",
+            "on-click": "playerctl play-pause",
+            "tooltip": false
         }
+        // "custom/media": {
+        //     "format": "{icon} {}",
+        //     "return-type": "json",
+        //     "max-length": 40,
+        //     "format-icons": {
+        //         "spotify": "",
+        //         "default": "🎜"
+        //     },
+        //     "escape": true,
+        //     "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        //         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        // }
 }
