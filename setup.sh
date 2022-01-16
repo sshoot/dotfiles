@@ -15,6 +15,8 @@ if ! [ -e "$HOME/.config" ] && ! [ -d "$HOME/.config" ] ; then
 fi
 ln -s $DOTFILESDIR/.config/alacritty $HOME/.config
 ln -s $DOTFILESDIR/.config/i3 $HOME/.config
+ln -s $DOTFILESDIR/.config/kitty $HOME/.config
+ln -s $DOTFILESDIR/.config/mako $HOME/.config
 ln -s $DOTFILESDIR/.config/matplotlib $HOME/.config
 ln -s $DOTFILESDIR/.config/picom $HOME/.config
 ln -s $DOTFILESDIR/.config/pipewire $HOME/.config
