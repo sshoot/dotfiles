@@ -40,6 +40,7 @@ fi
 if [ -e /etc/arch-release ] ; then
 #   for arch linux
     if [ -z "${DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
+        WLR_NO_HARDWARE_CURSORS=1
         [ -x /usr/bin/sway ] && exec sway
 #        startx
     fi
