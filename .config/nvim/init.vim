@@ -12,8 +12,23 @@ call plug#begin()
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
+
+"""
+" coc settings
+"""
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 set number
 syntax enable
@@ -35,14 +50,12 @@ set shiftwidth=4
 set ignorecase
 set smartcase
 set incsearch 
-set undodir=D:expand('$HOME/.cache/vim/undo')
+set undodir=$HOME/.cache/nvim/undo
+
 
 if v:progname =~? "evim"
   finish
 endif
-
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
