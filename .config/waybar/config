@@ -88,8 +88,8 @@
             "format": "{}% "
         },
         "temperature": {
-            "thermal-zone": 3,
-            // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+            // "thermal-zone": 3,
+            "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
             "critical-threshold": 65,
             "format-critical": "{temperatureC}°C {icon}",
             "format": "{temperatureC}°C {icon}",
@@ -118,7 +118,7 @@
             "bat": "BAT2"
         },
         "network": {
-            "interface": "wlp2s0", // (Optional) To force the use of this interface
+            //"interface": "wlp2s0", // (Optional) To force the use of this interface
             "format": "{ifname}",
             "format-wifi": "{essid} ({signalStrength}%) ",
             "format-ethernet": "{ipaddr}/{cidr} ",
