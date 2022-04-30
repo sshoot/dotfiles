@@ -1,5 +1,5 @@
 if ! [ $0 = "./setup.sh" ] ; then
-    return 1
+    exit 1
 fi
 
 DOTFILESDIR="$PWD"
@@ -14,6 +14,7 @@ if ! [ -e "$HOME/.config" ] && ! [ -d "$HOME/.config" ] ; then
     mkdir "$HOME/.config"
 fi
 ln -s $DOTFILESDIR/.config/alacritty $HOME/.config
+ln -s $DOTFILESDIR/.config/git $HOME/.config
 ln -s $DOTFILESDIR/.config/i3 $HOME/.config
 ln -s $DOTFILESDIR/.config/kitty $HOME/.config
 ln -s $DOTFILESDIR/.config/mako $HOME/.config
