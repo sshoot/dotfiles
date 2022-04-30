@@ -31,11 +31,11 @@ if [ -e /etc/gentoo-release ] ; then
 elif [ -e /etc/arch-release ] ; then
     autoload -Uz compinit
     compinit
-    export AUR_PAGER=ranger
     alias aur-vercmp='aur repo -d custom --list | aur vercmp'
 fi
 
-if [ $TERM = 'alacritty' ] ; then
+alias cdvifm='cd $(vifm --choose-dir -)'
+if [ $TERM = 'alacritty' ] || [ $TERM = 'xterm-kitty' ] ; then
     alias ssh='TERM=xterm-256color ssh'
 fi
 
@@ -54,5 +54,7 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
 PROMPT='
 %F{cyan}%n%f@%F{magenta}%m%f[%F{green}%~%f]${vcs_info_msg_0_}
-%# '
+%(?..%B%F{red}%?%f%b )%# '
 RPROMPT='%D %*'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,48 +1,20 @@
-## Settings for environmental variables
-case $PATH in
-    *"$HOME/.local/bin"*)
-        ;;
-    *)
-        export PATH="$HOME/.local/bin:$PATH" ;;
-esac
+## Load .profile
+source ~/.profile
 
-case $PATH in
-    *"$HOME/.local/texlive/2021/bin/x86_64-linux"*)
-        ;;
-    *)
-        export PATH="$PATH:$HOME/.local/texlive/2021/bin/x86_64-linux";;
-esac
-
-case $MANPATH in
-    *"$HOME/.local/share/man"*)
-        ;;
-    *)
-        export MANPATH="$MANPATH:$HOME/.local/share/man" ;;
-esac
-
-case $INFOPATH in
-    *"$HOME/.local/share/info"*)
-        ;;
-    *)
-        export INFOPATH="$INFOPATH:$HOME/.local/share/info" ;;
-esac
-
-## Runtime directory setting
-if [ -z "${XDG_RUNTIME_DIR}" ] ; then
-    export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
-    if ! [ -d "${XDG_RUNTIME_DIR}" ] ; then
-        mkdir "${XDG_RUNTIME_DIR}"
-        chmod 0700 "${XDG_RUNTIME_DIR}"
-    fi
-fi
+## Load /etc/profile.d/*.sh
+for i in /etc/profile.d/*.sh ; do
+    [ -r $i ] && source $i
+done
 
 ## Start window manager
 if [ -e /etc/arch-release ] ; then
 #   for arch linux
-    if [ -z "${DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
-        export WLR_NO_HARDWARE_CURSORS=1
-        [ -x /usr/bin/sway ] && exec sway
-#        startx
+    if [ -z "${DISPLAY}" ]; then
+        if [ "$(tty)" = "/dev/tty1" ]; then
+            [ -x /usr/bin/sway ] && exec sway
+        elif [ "$(tty)" = "/dev/tty2" ]; then
+            exec startx
+        fi
     fi
 elif [ -e /etc/gentoo-release ] ; then
 #   for gentoo linux
