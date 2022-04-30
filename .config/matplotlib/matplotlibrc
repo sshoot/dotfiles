@@ -565,7 +565,7 @@ ytick.minor.visible: True   # visibility of minor ticks on y-axis
                                # expressed as a fraction of the average axis height
 
 ## Figure layout
-#figure.autolayout: False  # When True, automatically adjust subplot
+figure.autolayout: True  # When True, automatically adjust subplot
                            # parameters to make the plot fit the figure
                            # using `tight_layout`
 #figure.constrained_layout.use: False  # When True, automatically make plot
@@ -693,10 +693,10 @@ savefig.transparent: True     # setting that controls whether figures are saved 
 #ps.fonttype:       3       # Output Type 3 (Type3) or Type 42 (TrueType)
 
 ### PDF backend params
-pdf.compression:    9  # integer from 0 to 9
+pdf.compression:    5  # integer from 0 to 9
                         # 0 disables compression (good for debugging)
 pdf.fonttype:       42  # Output Type 3 (Type3) or Type 42 (TrueType)
-pdf.use14corefonts: True
+#pdf.use14corefonts: True
 #pdf.inheritcolor:   False
 
 ### SVG backend params
