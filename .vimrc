@@ -1,48 +1,19 @@
-"
-" minpack settings
-"
-if &compatible
-    set nocompatible
+"""
+" vim-plug settings
+"""
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-function! PackInit() abort
-    packadd minpac
+call plug#begin()
 
-    call minpac#init()
-    
-    call minpac#add('preservim/nerdtree')
-    call minpac#add('dense-analysis/ale')
-    call minpac#add('prabirshrestha/vim-lsp')
-    call minpac#add('mattn/vim-lsp-settings')
-    call minpac#add('vim-denops/denops.vim', {'type': 'opt'})
-    call minpac#add('Shougo/ddc.vim', {'type': 'opt'})
-    call minpac#add('Shougo/ddc-matcher_head', {'type': 'opt'})
-    call minpac#add('shun/ddc-vim-lsp')
-endfunction
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'dense-analysis/ale'
 
-command! PackUpdate call PackInit() | call minpac#update()
-command! PackClean call PackInit() | call minpac#clean()
-command! PackStatus packadd minpac | call minpac#status()
-
-"
-" End minpack settings
-"
-
-"
-" ddc settings
-"
-packadd denops.vim
-packadd ddc.vim
-packadd ddc-matcher_head
-
-call ddc#custom#patch_global('sources', ['vim-lsp'])
-call ddc#custom#patch_global('sourceOptions', {
-                \ 'vim-lsp': {
-                \ 'matchers': ['matcher_head'],
-                \ 'mark': 'lsp',
-                \ },
-                \ })
-call ddc#enable()
+call plug#end()
 
 set number
 syntax enable
@@ -64,7 +35,6 @@ set shiftwidth=4
 set ignorecase
 set smartcase
 set incsearch 
-set wrapscan
 set undodir=D:expand('$HOME/.cache/vim/undo')
 
 if v:progname =~? "evim"
