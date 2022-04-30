@@ -17,6 +17,7 @@ ln -s $DOTFILESDIR/.config/alacritty $HOME/.config
 ln -s $DOTFILESDIR/.config/git $HOME/.config
 ln -s $DOTFILESDIR/.config/i3 $HOME/.config
 ln -s $DOTFILESDIR/.config/kitty $HOME/.config
+ln -s $DOTFILESDIR/.config/nvim $HOME/.config
 ln -s $DOTFILESDIR/.config/mako $HOME/.config
 ln -s $DOTFILESDIR/.config/matplotlib $HOME/.config
 ln -s $DOTFILESDIR/.config/picom $HOME/.config
