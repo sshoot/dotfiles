@@ -85,6 +85,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_options ctrl:swapcaps
 }
 
+input "10522:34050:Anker_A7726_Keyboard" {
+    xkb_options ctrl:swapcaps
+}
 
 ### Key bindings
 #
