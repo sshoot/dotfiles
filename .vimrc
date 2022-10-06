@@ -35,7 +35,10 @@ set shiftwidth=4
 set ignorecase
 set smartcase
 set incsearch 
-set undodir=D:expand('$HOME/.cache/vim/undo')
+set modeline
+set modelines=5
+set undodir=$HOME/.cache/vim/undo
+set backupdir=$HOME/.cache/vim/backup
 
 if v:progname =~? "evim"
   finish
