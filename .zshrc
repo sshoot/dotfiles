@@ -57,4 +57,12 @@ PROMPT='
 %(?..%B%F{red}%?%f%b )%# '
 RPROMPT='%D %*'
 
+function git () {
+    if [[ $(pwd -P) == /mnt/c/* ]]; then
+        "/mnt/c/Program Files/Git/cmd/git.exe" "$@"
+    else
+        /usr/bin/git "$@"
+    fi
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
