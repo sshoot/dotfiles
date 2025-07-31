@@ -37,8 +37,9 @@ set smartcase
 set incsearch 
 set modeline
 set modelines=5
-set undodir=$HOME/.cache/vim/undo
-set backupdir=$HOME/.cache/vim/backup
+set undodir=$HOME/.cache/vim/undo//
+set backupdir=$HOME/.cache/vim/backup//
+set dir=$HOME/.cache/vim/swap//
 
 if v:progname =~? "evim"
   finish

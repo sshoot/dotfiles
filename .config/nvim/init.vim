@@ -13,6 +13,7 @@ Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -78,9 +79,11 @@ set shiftwidth=4
 set ignorecase
 set smartcase
 set incsearch 
-set undodir=$HOME/.cache/nvim/undo
-set backupdir=$HOME/.cache/nvim/backup
+set undodir=$HOME/.cache/nvim/undo//
+set backupdir=$HOME/.cache/nvim/backup//
+set dir=$HOME/.cache/nvim/swap//
 
+let mapleader = "\<Space>"
 
 if v:progname =~? "evim"
   finish

@@ -10,6 +10,9 @@ zstyle :compinstall filename '$HOME/.zshrc'
 
 # End of lines added by compinstall
 
+# Completin for sudo
+# zstyle ':completion:*:sudo:*' environ PATH="$SUDO_PATH:$PATH"
+
 #setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
 setopt hist_ignore_all_dups
@@ -53,7 +56,7 @@ zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
 PROMPT='
-%F{cyan}%n%f@%F{magenta}%m%f[%F{green}%~%f]${vcs_info_msg_0_}
+%F{cyan}%n[%y]%f@%F{magenta}%m%f[%F{green}%~%f]${vcs_info_msg_0_}
 %(?..%B%F{red}%?%f%b )%# '
 RPROMPT='%D %*'
 
